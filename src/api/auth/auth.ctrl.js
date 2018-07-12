@@ -1,6 +1,7 @@
 import User from 'db/models/User';
 import jwt from 'jsonwebtoken';
 import logger from 'lib/logger';
+import config from 'config';
 
 export const register = async ctx => {
     const {
@@ -47,8 +48,8 @@ export const login = async ctx => {
             return ;
         }
 
-        let accessToken = jwt.sign({ email : existUser.email }, "wefiojxcv#", { expiresIn : '1h'});
-        let refreshToken = jwt.sign({ email : existUser.email }, "wefiojxcv#", { expiresIn : '7d'});
+        let accessToken = jwt.sign({ email : existUser.email }, config.jwtSecret, { expiresIn : '1h'});
+        let refreshToken = jwt.sign({ email : existUser.email }, config.jwtSecret, { expiresIn : '7d'});
 
         ctx.body = {
             accessToken,
