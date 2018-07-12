@@ -1,3 +1,4 @@
 import app from 'app';
+import config from 'config';
 
-app.listen(2000);
+app.listen(config.port);
