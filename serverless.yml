@@ -8,10 +8,14 @@ plugins:
 provider:
   name: aws
   runtime: nodejs6.10
+  environment: 
+    NODE_ENV: ${opt:stage}
 functions:
   app:
-    handler: src/app.handler 
+    handler: src/serverless.handler 
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+    cors:
+      origin: '*' 
       
