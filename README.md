@@ -54,9 +54,9 @@ reset pacakge.json & serverless.yml
 
 ## Scripts
 
-* `yarn start' - starting local server
-* `yarn deploy' - deploy aws lambda (prod stage)
-* `yarn deploy:dev' - deploy aws lambda(dev stage)
+* `yarn start` - starting local server
+* `yarn deploy` - deploy aws lambda (prod stage)
+* `yarn deploy:dev` - deploy aws lambda(dev stage)
 
 ## License
 
