@@ -1,0 +1,27 @@
+{
+  "name": "serverless-koa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "http://github.com/y0c",
+  "author": "y0c <wonder789@naver.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "serverless-webpack": "^5.2.0",
+    "webpack": "^3.3.0"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "jsonwebtoken": "^8.3.0",
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.2.3",
+    "serverless-http": "^1.6.0"
+  }
+}
