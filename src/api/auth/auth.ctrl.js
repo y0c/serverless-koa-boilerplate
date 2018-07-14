@@ -2,6 +2,7 @@ import User from 'db/models/User';
 import jwt from 'jsonwebtoken';
 import logger from 'lib/logger';
 import config from 'config';
+import Joi from 'joi';
 
 export const register = async ctx => {
     const {
@@ -9,6 +10,24 @@ export const register = async ctx => {
         password,
         username
     } = ctx.request.body;
+    
+    const schema = Joi.object().keys({
+        email : Joi.string().email().required(),
+        password : Joi.string().min(8).max(10).required(),
+        username : Joi.string().min(6).max(20).required()
+    });
+
+    let validateResult = schema.validate(ctx.request.body);
+
+    if( validateResult.error != null ) {
+        ctx.status = 422;
+        ctx.body = { 
+            type : "ValidateError",
+            message : validateResult.error.details[0].message }
+        ;
+        return; 
+    }
+    
     
     try {
         const existUser = await User.findByEmail(email);
@@ -33,6 +52,23 @@ export const login = async ctx => {
         password
     } = ctx.request.body;
 
+    const schema = Joi.object().keys({
+        email : Joi.string().email().required(),
+        password : Joi.string().min(8).max(10).required()
+    });
+
+    let validateResult = schema.validate(ctx.request.body);
+
+    if( validateResult.error != null ) {
+        ctx.status = 422;
+        ctx.body = { 
+            type : "ValidateError",
+            message : validateResult.error.details[0].message }
+        ;
+        return;
+    }
+    
+    
     try {
         const existUser = await User.findByEmail(email);
         
